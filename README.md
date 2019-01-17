@@ -49,7 +49,7 @@ Some additional files should be added to default set:
 
 ## 2.2 Java style rules
 
-### 2.2.1 Definition and naming
+### 2.2.1 Naming
 
 * If interface and class names are the same, use **Impl** postfix.  
 
