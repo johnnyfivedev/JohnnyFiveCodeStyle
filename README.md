@@ -69,9 +69,10 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | `Boolean isValid`  			    | `Boolean b`  		 |
 | `long id`       			    | `long ID`         	 |
 		
-* Name booleans according to rules of english language.
-// todo
-
+* Name booleans according to rules of english language.  
+`Boolean shouldShow;`  
+`Boolean hasDate;`  
+`hasDate isValid;`  
 
 * Treat acronyms as words.
 
