@@ -10,10 +10,6 @@
 Classes' names that extend an Android component, should end with the name of the component.  
 `SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ExitDialogFragment`.
 
-### 1.2.2 Resources files
-
-Resources file names are written in __lowercase_underscore__.
-
 #### 1.2.2.1 Drawable files
 
 Naming conventions for drawables:
