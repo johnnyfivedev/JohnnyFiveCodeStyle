@@ -49,7 +49,7 @@ Some additional files should be added to default set:
 
 ## 2.2 Java style rules
 
-### 2.2.1 Fields definition and naming
+### 2.2.1 Definition and naming
 
 * If interface and class names are the same, use **Impl** postfix.  
 
@@ -83,7 +83,7 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | `long id`        | `long ID`        |
 
 
-### 2.2.5 Use standard brace style
+### 2.2.5 Brace style
 
 Braces go on the same line as the code before them.
 Always use braces even if statement has one line. It make code more readable and consistent.
