@@ -66,8 +66,8 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | Good                                      | Bad            		 |
 | ----------------------------------------- | -------------------------- |
 | `SimpleDateFormatter simpleDateFormatter` | `SimpleDateFormatter sdf`  |
+| `SimpleDateFormatter simpleDateFormatter` | `SimpleDateFormatter formatter`  |
 | `Boolean isValid`  			    | `Boolean b`  		 |
-| `long id`       			    | `long ID`         	 |
 		
 * Name booleans according to rules of english language.  
 `Boolean shouldShow;`  
@@ -171,6 +171,9 @@ public class MainActivity extends BaseActivity {
 }
 ```
 
+### 2.2.11 Regions
+//todo
+
 ### 2.2.11 Parameter ordering in methods
 
 When programming for Android, it is quite common to define methods that take a `Context`. If you are writing a method like this, then the __Context__ must be the __first__ parameter.
@@ -180,18 +183,21 @@ The opposite case are __callback__ interfaces that should always be the __last__
 Examples:
 
 ```java
-// Context always goes first
 public User loadUser(Context context, int userId);
 
-// Callbacks always go last
-public void loadUserAsync(Context context, int userId, UserCallback callback);
+public User loadUser(Context context, int userId, OnUserLoadedCallback onUserLoadedCallback);
 ```
 
-### 2.2.13 String constants, naming, and values
+### 2.2.13 Сonstants-keys
 
-Many elements of the Android SDK such as `SharedPreferences`, `Bundle`, or `Intent` use a key-value pair approach so it's very likely that even for a small app you end up having to write a lot of String constants.
+Many elements of the Android SDK such as `SharedPreferences`, `Bundle`, or `Intent` use a key-value pair approach.
+When using one of these components, you can simply name them as `KEY_`
 
-When using one of these components, you __must__ define the keys as a `static final` fields and they should be prefixed as indicated below.
+```java
+static final String KEY_EMAIL = "KEY_EMAIL"
+static final String KEY_EMAIL = "KEY_AGE"
+```
+If class has a lot of keys, you may (__optionally__) use these prefixes.
 
 | Element            | Field Name Prefix |
 | -----------------  | ----------------- |
@@ -201,64 +207,14 @@ When using one of these components, you __must__ define the keys as a `static fi
 | Intent Extra       | `EXTRA_`            |
 | Intent Action      | `ACTION_`           |
 
-Note that the arguments of a Fragment - `Fragment.getArguments()` - are also a Bundle. However, because this is a quite common use of Bundles, we define a different prefix for them.
 
 Example:
 
 ```java
-// Note the value of the field is the same as the name to avoid duplication issues
 static final String PREF_EMAIL = "PREF_EMAIL";
 static final String BUNDLE_AGE = "BUNDLE_AGE";
 static final String ARGUMENT_USER_ID = "ARGUMENT_USER_ID";
-
-// Intent-related items use full package name as value
-static final String EXTRA_SURNAME = "com.myapp.extras.EXTRA_SURNAME";
-static final String ACTION_OPEN_USER = "com.myapp.action.ACTION_OPEN_USER";
 ```
-
-### 2.2.14 Arguments in Fragments and Activities
-
-When data is passed into an `Activity` or `Fragment` via an `Intent` or a `Bundle`, the keys for the different values __must__ follow the rules described in the section above.
-
-When an `Activity` or `Fragment` expects arguments, it should provide a `public static` method that facilitates the creation of the relevant `Intent` or `Fragment`.
-
-In the case of Activities the method is usually called `getStartIntent()`:
-
-```java
-public static Intent getStartIntent(Context context, User user) {
-	Intent intent = new Intent(context, ThisActivity.class);
-	intent.putParcelableExtra(EXTRA_USER, user);
-	return intent;
-}
-```
-
-For Fragments it is named `newInstance()` and handles the creation of the Fragment with the right arguments:
-
-```java
-public static UserFragment newInstance(User user) {
-	UserFragment fragment = new UserFragment();
-	Bundle args = new Bundle();
-	args.putParcelable(ARGUMENT_USER, user);
-	fragment.setArguments(args)
-	return fragment;
-}
-```
-
-__Note 1__: These methods should go at the top of the class before `onCreate()`.
-
-__Note 2__: If we provide the methods described above, the keys for extras and arguments should be `private` because there is not need for them to be exposed outside the class.
-
-### 2.2.15 Line length limit
-
-Code lines should not exceed __100 characters__. If the line is longer than this limit there are usually two options to reduce its length:
-
-* Extract a local variable or method (preferable).
-* Apply line-wrapping to divide a single line into multiple ones.
-
-There are two __exceptions__ where it is possible to have lines longer than 100:
-
-* Lines that are not possible to split, e.g. long URLs in comments.
-* `package` and `import` statements.
 
 #### 2.2.15.1 Line-wrapping strategies
 
@@ -266,7 +222,7 @@ There isn't an exact formula that explains how to line-wrap and quite often diff
 
 __Break at operators__
 
-When the line is broken at an operator, the break comes __before__ the operator. For example:
+The break comes __before__ the operator.
 
 ```java
 int longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne
@@ -275,7 +231,7 @@ int longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne
 
 __Assignment Operator Exception__
 
-An exception to the `break at operators` rule is the assignment operator `=`, where the line break should happen __after__ the operator.
+An exception to the `break at operators` rule is the assignment operator `=`, the line breaks __after__ the operator.
 
 ```java
 int longName =
@@ -284,11 +240,7 @@ int longName =
 
 __Method chain case__
 
-When multiple methods are chained in the same line - for example when using Builders - every call to a method should go in its own line, breaking the line before the `.`
-
-```java
-Picasso.with(context).load("http://ribot.co.uk/images/sexyjoe.jpg").into(imageView);
-```
+When multiple methods are chained in the same line, every call to a method(except first) should go in its own line.
 
 ```java
 Picasso.with(context)
@@ -299,10 +251,6 @@ Picasso.with(context)
 __Long parameters case__
 
 When a method has many parameters or its parameters are very long, we should break the line after every comma `,`
-
-```java
-loadPicture(context, "http://ribot.co.uk/images/sexyjoe.jpg", mImageViewProfilePicture, clickListener, "Title of the picture");
-```
 
 ```java
 loadPicture(context,
@@ -318,11 +266,11 @@ Rx chains of operators require line-wrapping. Every operator must go in a new li
 
 ```java
 public Observable<Location> syncLocations() {
-    return mDatabaseHelper.getAllLocations()
+    return databaseHelper.getAllLocations()
             .concatMap(new Func1<Location, Observable<? extends Location>>() {
                 @Override
                  public Observable<? extends Location> call(Location location) {
-                     return mRetrofitService.getLocation(location.id);
+                     return retrofitService.getLocation(location.getId());
                  }
             })
             .retry(new Func2<Integer, Throwable, Boolean>() {
@@ -336,65 +284,19 @@ public Observable<Location> syncLocations() {
 
 ## 2.3 XML style rules
 
-### 2.3.1 Use self closing tags
-
-When an XML element doesn't have any contents, you __must__ use self closing tags.
-
-This is good:
-
-```xml
-<TextView
-	android:id="@+id/text_view_profile"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content" />
-```
-
-This is __bad__ :
-
-```xml
-<!-- Don\'t do this! -->
-<TextView
-    android:id="@+id/text_view_profile"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
-</TextView>
-```
-
-
 ### 2.3.2 Resources naming
-
-Resource IDs and names are written in __lowercase_underscore__.
 
 #### 2.3.2.1 ID naming
 
 IDs should be prefixed with the name of the element in lowercase underscore. For example:
 
 
-| Element            | Prefix            |
-| -----------------  | ----------------- |
-| `TextView`           | `text_`             |
-| `ImageView`          | `image_`            |
-| `Button`             | `button_`           |
+| Element              | Prefix              |
+| -------------------  | ------------------- |
+| `TextView`           | `tv_`             |
+| `ImageView`          | `iv_`            |
+| `Button`             | `btn_`           |
 | `Menu`               | `menu_`             |
-
-Image view example:
-
-```xml
-<ImageView
-    android:id="@+id/image_profile"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-```
-
-Menu example:
-
-```xml
-<menu>
-	<item
-        android:id="@+id/menu_done"
-        android:title="Done" />
-</menu>
-```
 
 #### 2.3.2.2 Strings
 
@@ -403,16 +305,11 @@ String names start with a prefix that identifies the section they belong to. For
 
 | Prefix             | Description                           |
 | -----------------  | --------------------------------------|
-| `error_`             | An error message                      |
-| `msg_`               | A regular information message         |
-| `title_`             | A title, i.e. a dialog title          |
-| `action_`            | An action such as "Save" or "Create"  |
+| `error_`           | An error message                      |
+| `msg_`             | A regular information message         |
+| `title_`           | A title, i.e. a dialog title          |
+| `hint_`            | EditText hint		             |
 
-
-
-#### 2.3.2.3 Styles and Themes
-
-Unlike the rest of resources, style names are written in __UpperCamelCase__.
 
 ### 2.3.3 Attributes ordering
 
