@@ -8,7 +8,7 @@
 ### 1.2.1 Class files
 Class names are written in [UpperCamelCase](http://en.wikipedia.org/wiki/CamelCase).
 
-For classes that extend an Android component, the name of the class should end with the name of the component; for example: `SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ChangePasswordDialog`.
+Classes' names that extend an Android component, should end with the name of the component; for example: `SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ExitDialogFragment`.
 
 ### 1.2.2 Resources files
 
@@ -49,10 +49,7 @@ Layout files should match the name of the Android components that they are inten
 | Activity         | `UserProfileActivity`  | `activity_user_profile.xml`   |
 | Fragment         | `SignUpFragment`       | `fragment_sign_up.xml`        |
 | Dialog           | `ChangePasswordDialog` | `dialog_change_password.xml`  |
-| RecyclerView item | ---                    | `list_item_address.xml`             |
-
-
-Note that there are cases where these rules will not be possible to apply. For example, when creating layout files that are intended to be part of other layouts. In this case you should use the prefix `partial_`.
+| RecyclerView item | ---                    | `list_item_address.xml`      |
 
 
 #### 1.2.2.4 Values files
@@ -61,39 +58,17 @@ Resource files in the values folder should be __plural__, e.g. `strings.xml`, `s
 
 Some additional files should be added to default set. 
 
-`text_appearances.xml` - file with text styles.
-`colors_text.xml` - file with text colors (optional, if color set is too large).
-`dimens_text_sizes.xml` - file with text sizes (optional, if all text sizes covered in `text_appearances.xml`).
+`text_appearances.xml` - file with text styles.  
+`colors_text.xml` - file with text colors (optional, if color set is too large).  
+`dimens_text_sizes.xml` - file with text sizes (optional, if all text sizes covered in `text_appearances.xml`).  
 `dimens_widths_heights.xml` - file with widths and heights.
 
 # 2 Code guidelines
 
-## 2.1 Java language rules
-
-### 2.1.2 Don't catch generic exception
-
-You should not do this:
-
-```java
-try {
-    someComplicatedIOFunction();        // may throw IOException
-    someComplicatedParsingFunction();   // may throw ParsingException
-    someComplicatedSecurityFunction();  // may throw SecurityException
-    // phew, made it all the way
-} catch (Exception e) {                 // I'll just catch all exceptions
-    handleError();                      // with one generic handler!
-}
-```
-
-See the reason why and some alternatives [here](https://source.android.com/source/code-style.html#dont-catch-generic-exception)
-
-### 2.1.3 Don't use finalizers
-
-_There are no guarantees as to when a finalizer will be called, or even that it will be called at all. In most cases, you can do what you need from a finalizer with good exception handling. If you absolutely need it, define a `close()` method (or the like) and document exactly when that method needs to be called. See `InputStream` for an example. In this case it is appropriate but not required to print a short log message from the finalizer, as long as it is not expected to flood the logs._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#dont-use-finalizers))
-
-
 ## 2.2 Java style rules
 
+
+// todo remove
 ### 2.2.1 Fields definition and naming
 
 Fields should be defined at the __top of the file__ and they should follow the naming rules listed below.
@@ -129,7 +104,7 @@ public class MyClass {
 ### 2.2.5 Use standard brace style
 
 Braces go on the same line as the code before them.
-Always use braces even if statement has one line. It make code more readable and concise.
+Always use braces even if statement has one line. It make code more readable and consistent.
 
 ```java
 class MyClass {
@@ -145,72 +120,72 @@ class MyClass {
 }
 ```
 
-### 2.2.7 Limit variable scope
-
-_The scope of local variables should be kept to a minimum (Effective Java Item 29). By doing so, you increase the readability and maintainability of your code and reduce the likelihood of error. Each variable should be declared in the innermost block that encloses all uses of the variable._
-
-_Local variables should be declared at the point they are first used. Nearly every local variable declaration should contain an initializer. If you don't yet have enough information to initialize a variable sensibly, you should postpone the declaration until you do._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#limit-variable-scope))
-
 ### 2.2.10 Class member ordering
 
-There is no single correct solution for this but using a __logical__ and __consistent__ order will improve code learnability and readability. It is recommendable to use the following order:
+1. Constants 
+2. Local variables
+2. Fields (initialized in constructor)
+3. Fields (not initialized in constructor)
+4. View fields
+5. getInstance()/newInstance() methods (if singleton)
+6. Constructors
+7. Lifecycle methods (in natural order)
+8. Callbacks/anonymous classes
+9. Public methods
+10. Internal logic (private/protected methods)
+11. Inner classes/interfaces (try to avoid inner classes if possible)
 
-1. Constants
-2. Fields
-3. Constructors
-4. Override methods and callbacks (public or private)
-5. Public methods
-6. Private methods
-7. Inner classes or interfaces
+Each member groups should have a top indented of **one line** except for indent between fields and methods: it should be **two lines**.
 
 Example:
 
-```java
-public class MainActivity extends Activity {
-
-    private static final String TAG = MainActivity.class.getSimpleName();
-
-    private String mTitle;
-    private TextView mTextViewTitle;
-
-    @Override
-    public void onCreate() {
-        ...
-    }
-
-    public void setTitle(String title) {
-    	mTitle = title;
-    }
-
-    private void setUpView() {
-        ...
-    }
-
-    static class AnInnerClass {
-
-    }
-
-}
 ```
+public class MainActivity extends BaseActivity {
+    
+    public static final String KEY_USER_ID = "KEY_USER_ID";
 
-If your class is extending an __Android component__ such as an Activity or a Fragment, it is a good practice to order the override methods so that they __match the component's lifecycle__. For example, if you have an Activity that implements `onCreate()`, `onDestroy()`, `onPause()` and `onResume()`, then the correct order is:
+    public final int invalidId = -1;
 
-```java
-public class MainActivity extends Activity {
+    private Adapter adapter;
+    private Service service;
 
-	//Order matches Activity lifecycle
+    private ScrollView scrollView;
+    private TextView tvTitle;
+
+
+    //region ===================== Lifecycle ======================
+
     @Override
-    public void onCreate() {}
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+    
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+    
+    //endregion
+
+    //region ===================== Callbacks ======================
 
     @Override
-    public void onResume() {}
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+    
+    private View.OnClickListener btnOkClickListener = v -> {};
 
-    @Override
-    public void onPause() {}
+    private View.OnClickListener btnCancelClickListener = v -> {};
 
-    @Override
-    public void onDestroy() {}
+    //endregion
 
+    //region ===================== Internal ======================
+
+    private void initUI() {
+    }
+
+    //endregion
 }
 ```
 
