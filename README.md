@@ -53,7 +53,6 @@ Some additional files should be added to default set:
 
 ## 2.2 Java style rules
 
-// todo remove
 ### 2.2.1 Fields definition and naming
 
 * If Interface and class names are the same use **Impl** postfix:
@@ -121,7 +120,7 @@ Each member groups should have a top indented of **one line** except for indent 
 
 Example:
 
-```
+```java
 public class MainActivity extends BaseActivity {
     
     public static final String KEY_USER_ID = "KEY_USER_ID";
