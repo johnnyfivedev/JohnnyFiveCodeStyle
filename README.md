@@ -7,7 +7,8 @@
 
 ### 1.2.1 Class files
 
-Classes' names that extend an Android component, should end with the name of the component. `SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ExitDialogFragment`.
+Classes' names that extend an Android component, should end with the name of the component.  
+`SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ExitDialogFragment`.
 
 ### 1.2.2 Resources files
 
