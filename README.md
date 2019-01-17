@@ -64,17 +64,20 @@ Some additional files should be added to default set:
 * **No “m” or "s" letter in the name of a class member !**    
 Let [this](https://stackoverflow.com/questions/2092098/why-do-most-fields-class-members-in-android-tutorial-start-with-m) relics of the past die peacfully in an endless jungle of the legacy code. 
 
-* Do not shorten variables names. Use full and identical (or meaningful) to class name sequence. Prefer readability over conciseness.
-    SimpleDateFormatter sdf; - Bad
-    SimpleDateFormatter simpleDateFormatter; - Good		
-		Boolean b; - Very bad;
-		Boolean boolean; - Bad;
-		Boolean shouldShow; - Good
-		Boolean hasDate; - Good;
-		Boolean isValid; - Good.
+* Do not shorten variables names.  
+Use full and identical to class (or at least meaningful) name sequence. Prefer readability over conciseness.
+
+| Good                                      | Bad            		 |
+| ----------------------------------------- | -------------------------- |
+| `SimpleDateFormatter simpleDateFormatter` | `SimpleDateFormatter sdf`  |
+| `Boolean isValid`  			    | `Boolean b`  		 |
+| `long id`       			    | `long ID`         	 |
+		
+* Name booleans according to rules of english language.
+// todo
 
 
-### 2.2.3 Treat acronyms as words
+* Treat acronyms as words.
 
 | Good           | Bad            |
 | -------------- | -------------- |
