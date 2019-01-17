@@ -18,26 +18,13 @@ Resources file names are written in __lowercase_underscore__.
 Naming conventions for drawables:
 
 
-| Asset Type   | Prefix            |		Example               |
+| Asset Type   | Prefix            |		Example          |
 |--------------| ------------------|-----------------------------|
-| Action bar   | `ab_`             | `ab_stacked.9.png`          |
-| Button       | `btn_`	            | `btn_send_pressed.9.png`    |
-| Dialog       | `dialog_`         | `dialog_top.9.png`          |
+| Button       | `btn_`	           | `btn_send_pressed.9.png`    |
 | Divider      | `divider_`        | `divider_horizontal.9.png`  |
-| Icon         | `ic_`	            | `ic_star.png`               |
-| Menu         | `menu_	`           | `menu_submenu_bg.9.png`     |
+| Icon         | `ic_`	           | `ic_star.png`               |
 | Tabs         | `tab_`            | `tab_pressed.9.png`         |
-
-Naming conventions for selector states:
-
-| State	       | Suffix          | Example                     |
-|--------------|-----------------|-----------------------------|
-| Normal       | `_normal`       | `btn_order_normal.9.png`    |
-| Pressed      | `_pressed`      | `btn_order_pressed.9.png`   |
-| Focused      | `_focused`      | `btn_order_focused.9.png`   |
-| Disabled     | `_disabled`     | `btn_order_disabled.9.png`  |
-| Selected     | `_selected`     | `btn_order_selected.9.png`  |
-
+| Background   | `background_`     | `background_top_banner.xml` |
 
 #### 1.2.2.2 Layout files
 
@@ -48,15 +35,14 @@ Layout files should match the name of the Android components that they are inten
 | Activity         | `UserProfileActivity`  | `activity_user_profile.xml`   |
 | Fragment         | `SignUpFragment`       | `fragment_sign_up.xml`        |
 | Dialog           | `ChangePasswordDialog` | `dialog_change_password.xml`  |
-| RecyclerView item | ---                    | `list_item_address.xml`      |
+| RecyclerView item| ---                    | `list_item_address.xml`       |
 
 
 #### 1.2.2.4 Values files
 
 Resource files in the values folder should be __plural__, e.g. `strings.xml`, `styles.xml`, `colors.xml`, `dimens.xml`, `attrs.xml`
 
-Some additional files should be added to default set. 
-
+Some additional files should be added to default set: 
 `text_appearances.xml` - file with text styles.  
 `colors_text.xml` - file with text colors (optional, if color set is too large).  
 `dimens_text_sizes.xml` - file with text sizes (optional, if all text sizes covered in `text_appearances.xml`).  
@@ -66,29 +52,25 @@ Some additional files should be added to default set.
 
 ## 2.2 Java style rules
 
-
 // todo remove
 ### 2.2.1 Fields definition and naming
 
-Fields should be defined at the __top of the file__ and they should follow the naming rules listed below.
+* If Interface and class names are the same use **Impl** postfix:
+    UserRepository - interface
+    UserRepositoryImpl - implementation;
 
-* Private, non-static field names start with __m__.
-* Private, static field names start with __s__.
-* Other fields start with a lower case letter.
-* Static final fields (constants) are ALL_CAPS_WITH_UNDERSCORES.
+* **No “m” or "s" letter in the name of a class member !** 
+Let [this](https://stackoverflow.com/questions/2092098/why-do-most-fields-class-members-in-android-tutorial-start-with-m) relics of the past die peacfully in an endless jungle of the legacy code. 
 
-Example:
+* Do not shorten variables names. Use full and identical (or meaningful) to class name sequence. Prefer readability over conciseness.
+    SimpleDateFormatter sdf; - Bad
+    SimpleDateFormatter simpleDateFormatter; - Good		
+		Boolean b; - Very bad;
+		Boolean boolean; - Bad;
+		Boolean shouldShow; - Good
+		Boolean hasDate; - Good;
+		Boolean isValid; - Good.
 
-```java
-public class MyClass {
-    public static final int SOME_CONSTANT = 42;
-    public int publicField;
-    private static MyClass sSingleton;
-    int mPackagePrivate;
-    private int mPrivate;
-    protected int mProtected;
-}
-```
 
 ### 2.2.3 Treat acronyms as words
 
