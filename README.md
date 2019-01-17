@@ -43,7 +43,7 @@ Layout files should match the name of the Android components that they are inten
 
 Resource files in the values folder should be __plural__, e.g. `strings.xml`, `styles.xml`, `colors.xml`, `dimens.xml`, `attrs.xml`
 
-Some additional files should be added to default set: 
+Some additional files should be added to default set:  
 `text_appearances.xml` - file with text styles.  
 `colors_text.xml` - file with text colors (optional, if color set is too large).  
 `dimens_text_sizes.xml` - file with text sizes (optional, if all text sizes covered in `text_appearances.xml`).  
