@@ -55,11 +55,13 @@ Some additional files should be added to default set:
 
 ### 2.2.1 Fields definition and naming
 
-* If Interface and class names are the same use **Impl** postfix:
-    UserRepository - interface
-    UserRepositoryImpl - implementation;
+* If interface and class names are the same, use **Impl** postfix.  
 
-* **No “m” or "s" letter in the name of a class member !** 
+| Interface      | Class          |
+| -------------- | -------------- |
+| `UserRepository` | `UserRepositoryImpl` |
+
+* **No “m” or "s" letter in the name of a class member !**    
 Let [this](https://stackoverflow.com/questions/2092098/why-do-most-fields-class-members-in-android-tutorial-start-with-m) relics of the past die peacfully in an endless jungle of the legacy code. 
 
 * Do not shorten variables names. Use full and identical (or meaningful) to class name sequence. Prefer readability over conciseness.
