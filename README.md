@@ -3,10 +3,6 @@
 
 # 1. Project guidelines
 
-## 1.1 Project structure
-
-New projects should follow the Android Gradle project structure that is defined on the [Android Gradle plugin user guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Project-Structure). The [ribot Boilerplate](https://github.com/ribot/android-boilerplate) project is a good reference to start from.
-
 ## 1.2 File naming
 
 ### 1.2.1 Class files
@@ -31,19 +27,7 @@ Naming conventions for drawables:
 | Divider      | `divider_`        | `divider_horizontal.9.png`  |
 | Icon         | `ic_`	            | `ic_star.png`               |
 | Menu         | `menu_	`           | `menu_submenu_bg.9.png`     |
-| Notification | `notification_`	| `notification_bg.9.png`     |
 | Tabs         | `tab_`            | `tab_pressed.9.png`         |
-
-Naming conventions for icons (taken from [Android iconography guidelines](http://developer.android.com/design/style/iconography.html)):
-
-| Asset Type                      | Prefix             | Example                      |
-| --------------------------------| ----------------   | ---------------------------- |
-| Icons                           | `ic_`              | `ic_star.png`                |
-| Launcher icons                  | `ic_launcher`      | `ic_launcher_calendar.png`   |
-| Menu icons and Action Bar icons | `ic_menu`          | `ic_menu_archive.png`        |
-| Status bar icons                | `ic_stat_notify`   | `ic_stat_notify_msg.png`     |
-| Tab icons                       | `ic_tab`           | `ic_tab_recent.png`          |
-| Dialog icons                    | `ic_dialog`        | `ic_dialog_info.png`         |
 
 Naming conventions for selector states:
 
@@ -65,42 +49,26 @@ Layout files should match the name of the Android components that they are inten
 | Activity         | `UserProfileActivity`  | `activity_user_profile.xml`   |
 | Fragment         | `SignUpFragment`       | `fragment_sign_up.xml`        |
 | Dialog           | `ChangePasswordDialog` | `dialog_change_password.xml`  |
-| AdapterView item | ---                    | `item_person.xml`             |
-| Partial layout   | ---                    | `partial_stats_bar.xml`       |
+| RecyclerView item | ---                    | `list_item_address.xml`             |
 
-A slightly different case is when we are creating a layout that is going to be inflated by an `Adapter`, e.g to populate a `ListView`. In this case, the name of the layout should start with `item_`.
 
 Note that there are cases where these rules will not be possible to apply. For example, when creating layout files that are intended to be part of other layouts. In this case you should use the prefix `partial_`.
 
-#### 1.2.2.3 Menu files
-
-Similar to layout files, menu files should match the name of the component. For example, if we are defining a menu file that is going to be used in the `UserActivity`, then the name of the file should be `activity_user.xml`
-
-A good practice is to not include the word `menu` as part of the name because these files are already located in the `menu` directory.
 
 #### 1.2.2.4 Values files
 
 Resource files in the values folder should be __plural__, e.g. `strings.xml`, `styles.xml`, `colors.xml`, `dimens.xml`, `attrs.xml`
 
+Some additional files should be added to default set. 
+
+`text_appearances.xml` - file with text styles.
+`colors_text.xml` - file with text colors (optional, if color set is too large).
+`dimens_text_sizes.xml` - file with text sizes (optional, if all text sizes covered in `text_appearances.xml`).
+`dimens_widths_heights.xml` - file with widths and heights.
+
 # 2 Code guidelines
 
 ## 2.1 Java language rules
-
-### 2.1.1 Don't ignore exceptions
-
-You must never do the following:
-
-```java
-void setServerPort(String value) {
-    try {
-        serverPort = Integer.parseInt(value);
-    } catch (NumberFormatException e) { }
-}
-```
-
-_While you may think that your code will never encounter this error condition or that it is not important to handle it, ignoring exceptions like above creates mines in your code for someone else to trip over some day. You must handle every Exception in your code in some principled way. The specific handling varies depending on the case._ - ([Android code style guidelines](https://source.android.com/source/code-style.html))
-
-See alternatives [here](https://source.android.com/source/code-style.html#dont-ignore-exceptions).
 
 ### 2.1.2 Don't catch generic exception
 
@@ -121,16 +89,8 @@ See the reason why and some alternatives [here](https://source.android.com/sourc
 
 ### 2.1.3 Don't use finalizers
 
-_We don't use finalizers. There are no guarantees as to when a finalizer will be called, or even that it will be called at all. In most cases, you can do what you need from a finalizer with good exception handling. If you absolutely need it, define a `close()` method (or the like) and document exactly when that method needs to be called. See `InputStream` for an example. In this case it is appropriate but not required to print a short log message from the finalizer, as long as it is not expected to flood the logs._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#dont-use-finalizers))
+_There are no guarantees as to when a finalizer will be called, or even that it will be called at all. In most cases, you can do what you need from a finalizer with good exception handling. If you absolutely need it, define a `close()` method (or the like) and document exactly when that method needs to be called. See `InputStream` for an example. In this case it is appropriate but not required to print a short log message from the finalizer, as long as it is not expected to flood the logs._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#dont-use-finalizers))
 
-
-### 2.1.4 Fully qualify imports
-
-This is bad: `import foo.*;`
-
-This is good: `import foo.Bar;`
-
-See more info [here](https://source.android.com/source/code-style.html#fully-qualify-imports)
 
 ## 2.2 Java style rules
 
@@ -165,26 +125,11 @@ public class MyClass {
 | `String url`     | `String URL`     |
 | `long id`        | `long ID`        |
 
-### 2.2.4 Use spaces for indentation
-
-Use __4 space__ indents for blocks:
-
-```java
-if (x == 1) {
-    x++;
-}
-```
-
-Use __8 space__ indents for line wraps:
-
-```java
-Instrument i =
-        someLongExpression(that, wouldNotFit, on, one, line);
-```
 
 ### 2.2.5 Use standard brace style
 
 Braces go on the same line as the code before them.
+Always use braces even if statement has one line. It make code more readable and concise.
 
 ```java
 class MyClass {
@@ -194,58 +139,10 @@ class MyClass {
         } else if (somethingElse) {
             // ...
         } else {
-            // ...
+            print("Hello");
         }
     }
 }
-```
-
-Braces around the statements are required unless the condition and the body fit on one line.
-
-If the condition and the body fit on one line and that line is shorter than the max line length, then braces are not required, e.g.
-
-```java
-if (condition) body();
-```
-
-This is __bad__:
-
-```java
-if (condition)
-    body();  // bad!
-```
-
-### 2.2.6 Annotations
-
-#### 2.2.6.1 Annotations practices
-
-According to the Android code style guide, the standard practices for some of the predefined annotations in Java are:
-
-* `@Override`: The @Override annotation __must be used__ whenever a method overrides the declaration or implementation from a super-class. For example, if you use the @inheritdocs Javadoc tag, and derive from a class (not an interface), you must also annotate that the method @Overrides the parent class's method.
-
-* `@SuppressWarnings`: The @SuppressWarnings annotation should only be used under circumstances where it is impossible to eliminate a warning. If a warning passes this "impossible to eliminate" test, the @SuppressWarnings annotation must be used, so as to ensure that all warnings reflect actual problems in the code.
-
-More information about annotation guidelines can be found [here](http://source.android.com/source/code-style.html#use-standard-java-annotations).
-
-#### 2.2.6.2 Annotations style
-
-__Classes, Methods and Constructors__
-
-When annotations are applied to a class, method, or constructor, they are listed after the documentation block and should appear as __one annotation per line__ .
-
-```java
-/* This is the documentation block about the class */
-@AnnotationA
-@AnnotationB
-public class MyAnnotatedClass { }
-```
-
-__Fields__
-
-Annotations applying to fields should be listed __on the same line__, unless the line reaches the maximum line length.
-
-```java
-@Nullable @Mock DataManager mDataManager;
 ```
 
 ### 2.2.7 Limit variable scope
@@ -253,54 +150,6 @@ Annotations applying to fields should be listed __on the same line__, unless the
 _The scope of local variables should be kept to a minimum (Effective Java Item 29). By doing so, you increase the readability and maintainability of your code and reduce the likelihood of error. Each variable should be declared in the innermost block that encloses all uses of the variable._
 
 _Local variables should be declared at the point they are first used. Nearly every local variable declaration should contain an initializer. If you don't yet have enough information to initialize a variable sensibly, you should postpone the declaration until you do._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#limit-variable-scope))
-
-### 2.2.8 Order import statements
-
-If you are using an IDE such as Android Studio, you don't have to worry about this because your IDE is already obeying these rules. If not, have a look below.
-
-The ordering of import statements is:
-
-1. Android imports
-2. Imports from third parties (com, junit, net, org)
-3. java and javax
-4. Same project imports
-
-To exactly match the IDE settings, the imports should be:
-
-* Alphabetically ordered within each grouping, with capital letters before lower case letters (e.g. Z before a).
-* There should be a blank line between each major grouping (android, com, junit, net, org, java, javax).
-
-More info [here](https://source.android.com/source/code-style.html#limit-variable-scope)
-
-### 2.2.9 Logging guidelines
-
-Use the logging methods provided by the `Log` class to print out error messages or other information that may be useful for developers to identify issues:
-
-* `Log.v(String tag, String msg)` (verbose)
-* `Log.d(String tag, String msg)` (debug)
-* `Log.i(String tag, String msg)` (information)
-* `Log.w(String tag, String msg)` (warning)
-* `Log.e(String tag, String msg)` (error)
-
-As a general rule, we use the class name as tag and we define it as a `static final` field at the top of the file. For example:
-
-```java
-public class MyClass {
-    private static final String TAG = MyClass.class.getSimpleName();
-
-    public myMethod() {
-        Log.e(TAG, "My error message");
-    }
-}
-```
-
-VERBOSE and DEBUG logs __must__ be disabled on release builds. It is also recommended to disable INFORMATION, WARNING and ERROR logs but you may want to keep them enabled if you think they may be useful to identify issues on release builds. If you decide to leave them enabled, you have to make sure that they are not leaking private information such as email addresses, user ids, etc.
-
-To only show logs on debug builds:
-
-```java
-if (BuildConfig.DEBUG) Log.d(TAG, "The value of x is " + x);
-```
 
 ### 2.2.10 Class member ordering
 
