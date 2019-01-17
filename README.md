@@ -25,7 +25,7 @@ Naming conventions for drawables:
 
 #### 1.2.2.2 Layout files
 
-Layout files should match the name of the Android components that they are intended for but moving the top level component name to the beginning. For example, if we are creating a layout for the `SignInActivity`, the name of the layout file should be `activity_sign_in.xml`.
+Layout files should match the name of the Android components that they are intended for but moving the top level component name to the beginning.
 
 | Component        | Class Name             | Layout Name                   |
 | ---------------- | ---------------------- | ----------------------------- |
