@@ -1,4 +1,4 @@
-# JohnnyFiveCodeStyle
+# JohnnyFiveCodeStyleAndroid
 
 
 # 1. Project guidelines
