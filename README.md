@@ -5,12 +5,12 @@
 
 ## 1.2 File naming
 
-### 1.2.1 Class files
+### Class files
 
 Classes' names that extend an Android component, should end with the name of the component.  
 `SignInActivity`, `SignInFragment`, `ImageUploadService`, `ExitDialogFragment`.
 
-#### 1.2.2.1 Drawable files
+#### Drawable files
 
 Naming conventions for drawables:
 
@@ -23,7 +23,7 @@ Naming conventions for drawables:
 | Tabs         | `tab_`            | `tab_pressed.9.png`         |
 | Background   | `background_`     | `background_top_banner.xml` |
 
-#### 1.2.2.2 Layout files
+#### Layout files
 
 Layout files should match the name of the Android components that they are intended for but moving the top level component name to the beginning.
 
@@ -35,7 +35,7 @@ Layout files should match the name of the Android components that they are inten
 | RecyclerView item| ---                    | `list_item_address.xml`       |
 
 
-#### 1.2.2.4 Values files
+#### Values files
 
 Resource files in the values folder should be __plural__, e.g. `strings.xml`, `styles.xml`, `colors.xml`, `dimens.xml`, `attrs.xml`
 
