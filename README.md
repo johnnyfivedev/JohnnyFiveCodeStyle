@@ -288,9 +288,6 @@ public Observable<Location> syncLocations() {
 
 #### 2.3.2.1 ID naming
 
-IDs should be prefixed with the name of the element in lowercase underscore. For example:
-
-
 | Element              | Prefix              |
 | -------------------  | ------------------- |
 | `TextView`           | `tv_`             |
@@ -300,7 +297,7 @@ IDs should be prefixed with the name of the element in lowercase underscore. For
 
 #### 2.3.2.2 Strings
 
-String names start with a prefix that identifies the section they belong to. For example `registration_email_hint` or `registration_name_hint`. If a string __doesn't belong__ to any section, then you should follow the rules below:
+String names start with a prefix that identifies the section they belong to. For example `registration_email_hint` or `edit_profile_title`. If a string __doesn't belong__ to any section, then you may follow this rules:
 
 
 | Prefix             | Description                           |
@@ -314,6 +311,7 @@ String names start with a prefix that identifies the section they belong to. For
 
 ### 2.4.1 Unit tests
 
+<!---
 Test classes should match the name of the class the tests are targeting, followed by `Test`. For example, if we create a test class that contains tests for the `DatabaseHelper`, we should name it `DatabaseHelperTest`.
 
 Test methods are annotated with `@Test` and should generally start with the name of the method that is being tested, followed by a precondition and/or expected behaviour.
@@ -324,3 +322,6 @@ Test methods are annotated with `@Test` and should generally start with the name
 Precondition and/or expected behaviour may not always be required if the test is clear enough without them.
 
 Sometimes a class may contain a large amount of methods, that at the same time require several tests for each method. In this case, it's recommendable to split up the test class into multiple ones. For example, if the `DataManager` contains a lot of methods we may want to divide it into `DataManagerSignInTest`, `DataManagerLoadUsersTest`, etc. Generally you will be able to see what tests belong together because they have common [test fixtures](https://en.wikipedia.org/wiki/Test_fixture).
+
+-->
+
