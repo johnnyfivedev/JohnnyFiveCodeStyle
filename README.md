@@ -51,7 +51,7 @@ Some additional files should be added to default set:
 
 ### 2.2.1 Naming
 
-* If interface and class names are the same, use **Impl** postfix.  
+* **If interface and class names are the same, use Impl postfix** 
 
 | Interface      | Class          |
 | -------------- | -------------- |
@@ -60,7 +60,7 @@ Some additional files should be added to default set:
 * **No “m” or "s" letter in the name of a class member !**    
 Let [this](https://stackoverflow.com/questions/2092098/why-do-most-fields-class-members-in-android-tutorial-start-with-m) relics of the past die peacfully in an endless jungle of the legacy code. 
 
-* Do not shorten variables names.  
+* **Do not shorten variables names**  
 Use full and identical to class (or at least meaningful) name sequence. Prefer readability over conciseness.
 
 | Good                                      | Bad            		 |
@@ -69,13 +69,13 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | `SimpleDateFormatter simpleDateFormatter` | `SimpleDateFormatter formatter`  |
 | `Boolean isValid`  			    | `Boolean b`  		 |
 		
-* Name booleans according to rules of english language.
+* **Name booleans according to rules of english language**
 
 `Boolean shouldShow;`  
 `Boolean hasDate;`  
 `hasDate isValid;`  
 
-* Treat acronyms as words.
+* **Treat acronyms as words**
 
 | Good           | Bad            |
 | -------------- | -------------- |
