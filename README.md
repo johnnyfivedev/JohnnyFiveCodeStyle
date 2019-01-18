@@ -310,7 +310,7 @@ String names start with a prefix that identifies the section they belong to. For
 ## 2.4 Tests style rules
 
 ### 2.4.1 Unit tests
-
+// todo
 <!---
 Test classes should match the name of the class the tests are targeting, followed by `Test`. For example, if we create a test class that contains tests for the `DatabaseHelper`, we should name it `DatabaseHelperTest`.
 
