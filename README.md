@@ -8,7 +8,7 @@
 ### 1.2.1 Class files
 
 Classes' names that extend an Android component, should end with the name of the component.  
-`SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ExitDialogFragment`.
+`SignInActivity`, `SignInFragment`, `ImageUploadService`, `ExitDialogFragment`.
 
 #### 1.2.2.1 Drawable files
 
@@ -69,7 +69,8 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | `SimpleDateFormatter simpleDateFormatter` | `SimpleDateFormatter formatter`  |
 | `Boolean isValid`  			    | `Boolean b`  		 |
 		
-* Name booleans according to rules of english language.  
+* Name booleans according to rules of english language.
+
 `Boolean shouldShow;`  
 `Boolean hasDate;`  
 `hasDate isValid;`  
@@ -307,11 +308,11 @@ String names start with a prefix that identifies the section they belong to. For
 | `title_`           | A title, i.e. a dialog title          |
 | `hint_`            | EditText hint		             |
 
+<!---
 ## 2.4 Tests style rules
 
 ### 2.4.1 Unit tests
 // todo
-<!---
 Test classes should match the name of the class the tests are targeting, followed by `Test`. For example, if we create a test class that contains tests for the `DatabaseHelper`, we should name it `DatabaseHelperTest`.
 
 Test methods are annotated with `@Test` and should generally start with the name of the method that is being tested, followed by a precondition and/or expected behaviour.
