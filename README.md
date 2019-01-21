@@ -57,7 +57,7 @@ Some additional files should be added to default set:
 | -------------- | -------------- |
 | `UserRepository` | `UserRepositoryImpl` |
 
-* **No “m” or "s" letter in the name of a class member !**    
+* **No “m” or "s" letters at the class member's name start!**    
 Let [this](https://stackoverflow.com/questions/2092098/why-do-most-fields-class-members-in-android-tutorial-start-with-m) relic of the past die peacfully in an endless jungle of the legacy code. 
 
 * **Do not shorten variables names**  
