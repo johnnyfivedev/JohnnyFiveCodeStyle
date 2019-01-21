@@ -47,9 +47,7 @@ Some additional files should be added to default set:
 
 # 2 Code guidelines
 
-## 2.2 Java style rules
-
-### 2.2.1 Naming
+### 2.1 Naming
 
 * **If interface and class names are the same, use Impl postfix** 
 
@@ -85,7 +83,7 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | `long id`        | `long ID`        |
 
 
-### 2.2.5 Brace style
+### 2.2 Brace style
 
 Braces go on the same line as the code before them.
 Always use braces even if statement has one line. It make code more readable and consistent.
@@ -104,7 +102,7 @@ class MyClass {
 }
 ```
 
-### 2.2.10 Class member ordering
+### 2.3 Class member ordering
 
 1. Constants 
 2. Fields initialized in constructor
@@ -172,10 +170,10 @@ public class MainActivity extends BaseActivity {
 }
 ```
 
-### 2.2.11 Regions
+### 2.4 Regions
 //todo
 
-### 2.2.11 Parameter ordering in methods
+### 2.5 Parameter ordering in methods
 
 When programming for Android, it is quite common to define methods that take a `Context`. If you are writing a method like this, then the __Context__ must be the __first__ parameter.
 
@@ -189,7 +187,7 @@ public User loadUser(Context context, int userId);
 public User loadUser(Context context, int userId, OnUserLoadedCallback onUserLoadedCallback);
 ```
 
-### 2.2.13 Сonstants-keys
+### 2.6 Сonstants-keys
 
 Many elements of the Android SDK such as `SharedPreferences`, `Bundle`, or `Intent` use a key-value pair approach.
 When using one of these components, you can simply name them as `KEY_`
@@ -217,11 +215,9 @@ static final String BUNDLE_AGE = "BUNDLE_AGE";
 static final String ARGUMENT_USER_ID = "ARGUMENT_USER_ID";
 ```
 
-#### 2.2.15.1 Line-wrapping strategies
+#### 2.7 Line-wrapping strategies
 
-There isn't an exact formula that explains how to line-wrap and quite often different solutions are valid. However there are a few rules that can be applied to common cases.
-
-__Break at operators__
+* __Break at operators__
 
 The break comes __before__ the operator.
 
@@ -230,40 +226,40 @@ int longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne
         + theFinalOne;
 ```
 
-__Assignment Operator Exception__
+* __Assignment Operator Exception__
 
 An exception to the `break at operators` rule is the assignment operator `=`, the line breaks __after__ the operator.
 
 ```java
 int longName =
-        anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne + theFinalOne;
+        anotherVeryLongVariable + aShortOne - thisRidiculousLongOne + theFinalOne;
 ```
 
-__Method chain case__
+* __Method chain case__
 
 When multiple methods are chained in the same line, every call to a method(except first) should go in its own line.
 
 ```java
 Picasso.with(context)
-        .load("http://ribot.co.uk/images/sexyjoe.jpg")
-        .into(imageView);
+        .load("http://placehold.it/120x120&text=image1")
+        .into(ivImage);
 ```
 
-__Long parameters case__
+* __Long parameters case__
 
-When a method has many parameters or its parameters are very long, we should break the line after every comma `,`
+When a method has many parameters or/and parameters are very long, break the line after every comma `,`
 
 ```java
 loadPicture(context,
-        "http://ribot.co.uk/images/sexyjoe.jpg",
-        mImageViewProfilePicture,
+        "http://placehold.it/120x120&text=image1",
+        ivImage,
         clickListener,
         "Title of the picture");
 ```
 
-### 2.2.16 RxJava chains styling
+### 2.8 RxJava chains styling
 
-Rx chains of operators require line-wrapping. Every operator must go in a new line and the line should be broken before the `.`
+Every operator must go in a new line with the `.`
 
 ```java
 public Observable<Location> syncLocations() {
@@ -283,11 +279,11 @@ public Observable<Location> syncLocations() {
 }
 ```
 
-## 2.3 XML style rules
+## 2.2 XML style rules
 
-### 2.3.2 Resources naming
+### 2.2.1 Resources naming
 
-#### 2.3.2.1 ID naming
+#### 2.2.1.1 ID naming
 
 | Element              | Prefix              |
 | -------------------  | ------------------- |
@@ -296,7 +292,7 @@ public Observable<Location> syncLocations() {
 | `Button`             | `btn_`           |
 | `Menu`               | `menu_`             |
 
-#### 2.3.2.2 Strings
+#### 2.2.1.2 Strings
 
 String names start with a prefix that identifies the section they belong to. For example `registration_email_hint` or `edit_profile_title`. If a string __doesn't belong__ to any section, then you may follow this rules:
 
