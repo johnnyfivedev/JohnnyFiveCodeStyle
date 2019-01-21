@@ -107,7 +107,7 @@ class MyClass {
 ### 2.2.10 Class member ordering
 
 1. Constants 
-2. Fields (initialized in constructor)
+2. Fields initialized in constructor
 3. Local variables
 4. View fields
 5. getInstance()/newInstance() methods (if singleton)
