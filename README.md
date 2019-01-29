@@ -231,11 +231,8 @@ If MVP architectural pattern used:
 
 ### 2.5 Parameter ordering in methods
 
-When programming for Android, it is quite common to define methods that take a `Context`. If you are writing a method like this, then the __Context__ must be the __first__ parameter.
-
+It is quite common to define methods that take a `Context` in Android. The __Context__ must be the __first__ parameter.
 The opposite case are __callback__ interfaces that should always be the __last__ parameter.
-
-Examples:
 
 ```java
 public User loadUser(Context context, int userId);
@@ -252,10 +249,10 @@ When using one of these components, you can simply name them as `KEY_`
 static final String KEY_EMAIL = "KEY_EMAIL"
 static final String KEY_EMAIL = "KEY_AGE"
 ```
-If class has a lot of keys, you may (__optionally__) use these prefixes.
+If class has a lot of keys, you may use these prefixes.
 
-| Element            | Field Name Prefix |
-| -----------------  | ----------------- |
+| Element            | Field Name Prefix   |
+| -----------------  | ------------------- |
 | SharedPreferences  | `PREF_`             |
 | Bundle             | `BUNDLE_`           |
 | Fragment Arguments | `ARGUMENT_`         |
