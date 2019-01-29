@@ -62,11 +62,11 @@ Let [this](https://stackoverflow.com/questions/2092098/why-do-most-fields-class-
 * **Do not shorten variables names**  
 Use full and identical to class (or at least meaningful) name sequence. Prefer readability over conciseness.
 
-| Good                                      | Bad            		 |
-| ----------------------------------------- | -------------------------- |
-| `SimpleDateFormatter simpleDateFormatter` | `SimpleDateFormatter sdf`  |
-| `SimpleDateFormatter simpleDateFormatter` | `SimpleDateFormatter formatter`  |
-| `Boolean isValid`  			    | `Boolean b`  		 |
+| Bad                                       | Good            		 		 |
+| ----------------------------------------- | ------------------------------------------ |
+| `SimpleDateFormatter sdf` 		    | `SimpleDateFormatter simpleDateFormatter`  |
+| `SimpleDateFormatter formatter` 	    | `SimpleDateFormatter simpleDateFormatter`  |
+| `Boolean b`	  			    | `Boolean isValid`  		 	 |
 		
 * **Name booleans according to rules of english language**
 
@@ -76,12 +76,12 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 
 * **Treat acronyms as words**
 
-| Good           | Bad            |
-| -------------- | -------------- |
-| `XmlHttpRequest` | `XMLHTTPRequest` |
-| `getCustomerId`  | `getCustomerID`  |
-| `String url`     | `String URL`     |
-| `long id`        | `long ID`        |
+| Bad              | Good             |
+| ---------------- | ---------------- |
+| `XMLHTTPRequest` | `XmlHttpRequest` |
+| `getCustomerID`  | `getCustomerId`  |
+| `URL`     	   | `url`     	      |
+| `ID`       	   | `id`             |
 
 ### Collections
 
@@ -343,9 +343,9 @@ public Observable<Location> syncLocations() {
 
 | Element              | Prefix              |
 | -------------------  | ------------------- |
-| `TextView`           | `tv_`             |
-| `ImageView`          | `iv_`            |
-| `Button`             | `btn_`           |
+| `TextView`           | `tv_`               |
+| `ImageView`          | `iv_`               |
+| `Button`             | `btn_`              |
 | `Menu`               | `menu_`             |
 
 #### 2.2.1.2 Strings
