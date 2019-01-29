@@ -172,6 +172,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+	initUi();
     }
     
     @Override
@@ -196,15 +197,36 @@ public class MainActivity extends BaseActivity {
 
     //region ===================== Internal ======================
 
-    private void initUI() {
+    private void initUi() {
     }
 
+    private void hideContent() {
+    }
+    
     //endregion
 }
 ```
 
 ### 2.4 Regions
-//todo
+Region marks lets you create a block of code that can be expanded or collapsed. It also makes the separation of one type of code pieces from another more visual. This is the feature of IntelliJ IDEA.
+
+Opening tag  
+`//region ===================== Title ======================`
+
+Closing tag  
+`//endregion`
+
+Following type of regions are most common and used to separate members form paragraph above:
+* `Instance` - newInstance()/getInstance() methods (if singleton) . 
+* `Constructors`  
+* `Lifecycle`
+* `Callbacks` - callbacks and fields-listeners as anonymous classes
+* `Public` - public methods
+* `Internal` - private and protected methods
+
+If MVP architectural pattern used:
+* `View` - View methods (goes before `Public`) 
+* `Presenter` - Presenter methods
 
 ### 2.5 Parameter ordering in methods
 
