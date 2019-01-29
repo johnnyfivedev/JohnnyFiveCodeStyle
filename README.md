@@ -33,6 +33,7 @@ Layout files should match the name of the Android components that they are inten
 | Fragment         | `SignUpFragment`       | `fragment_sign_up.xml`        |
 | Dialog           | `ChangePasswordDialog` | `dialog_change_password.xml`  |
 | RecyclerView item| ---                    | `list_item_address.xml`       |
+| Partial layout   | ---                    | `partial_sign_in.xml`       |
 
 
 #### Values
