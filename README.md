@@ -108,7 +108,7 @@ Also you may use *Object, *Entiry, or *Model postfix.
 
 These cases are extremely rare and most of them caused by API developers who named entities poorly in the first place.
 
-* __Name `Map` according `valueByKeyMap` pattern (if naming after collection type in plural form doesn't seem right or obvious)__
+* __Name Maps according `valueByKeyMap` pattern (if naming after collection type in plural form doesn't seem right or obvious)__
 
 | Type                         | Name                |
 | ---------------------------- | ------------------- |
