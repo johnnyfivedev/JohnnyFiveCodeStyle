@@ -86,12 +86,14 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 ### Collections
 
 * **Should be named after collection type in plural form **
+
 | Type            | Name                |
 | --------------- | ------------------- |
 | `List<Article>` | `XMLHTTPRequest`    |
 | `Set<User>`     | `users`             |
 
 * **In case where entity itself has a plural name, you may use “*List/*Set/*Array” postfix
+
 | Type            | Name                |
 | --------------- | ------------------- |
 | `List<Goods>`   | `goodsList`         |
