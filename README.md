@@ -218,7 +218,7 @@ Closing tag
 `//endregion`
 
 Following type of regions are most common and used to separate members form paragraph above:
-* `Instance` - newInstance()/getInstance() methods (if singleton) . 
+* `Instance` - newInstance()/getInstance() methods (if singleton) 
 * `Constructors`  
 * `Lifecycle`
 * `Callbacks` - callbacks and fields-listeners as anonymous classes
