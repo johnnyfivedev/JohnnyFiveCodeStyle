@@ -92,14 +92,13 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | `List<Article>` | `XMLHTTPRequest`    |
 | `Set<User>`     | `users`             |
 
-* **In case where entity itself has a plural name, you may use “*List/*Set/*Array” postfix**
+* __In case where entity itself has a plural name, you may use “*List/*Set/*Array” postfix__
 
 | Type            | Name                |
 | --------------- | ------------------- |
 | `List<Goods>`   | `goodsList`         |
-| `Set<Scissors>` | `scissorsSet`          |
+| `Set<Scissors>` | `scissorsSet`       |
 
-These cases are extremely rare and most of them caused by API developers who named entities poorly in the first place.
 Also you may use *Object, *Entiry, or *Model postfix.
 
 | Type                | Name                |
@@ -107,6 +106,7 @@ Also you may use *Object, *Entiry, or *Model postfix.
 | `List<GoodsObject>` | `goodsObjects`      |
 | `Set<ScissorsModel>`| `scissorsModels`    |
 
+These cases are extremely rare and most of them caused by API developers who named entities poorly in the first place.
 
 ### 2.2 Brace style
 
