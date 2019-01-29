@@ -83,6 +83,28 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | `String url`     | `String URL`     |
 | `long id`        | `long ID`        |
 
+### Collections
+
+* **Should be named after collection type in plural form **
+| Type            | Name                |
+| --------------- | ------------------- |
+| `List<Article>` | `XMLHTTPRequest`    |
+| `Set<User>`     | `users`             |
+
+* **In case where entity itself has a plural name, you may use “*List/*Set/*Array” postfix
+| Type            | Name                |
+| --------------- | ------------------- |
+| `List<Goods>`   | `goodsList`         |
+| `Set<Scissors>` | `scissorsSet`          |
+
+These cases are extremely rare and most of them caused by API developers who named entities poorly in the first place.
+Also you may use *Object, *Entiry, or *Model postfix.
+
+| Type                | Name                |
+| ------------------  | ------------------- |
+| `List<GoodsObject>` | `goodsObjects`      |
+| `Set<ScissorsModel>`| `scissorsModels`    |
+
 
 ### 2.2 Brace style
 
