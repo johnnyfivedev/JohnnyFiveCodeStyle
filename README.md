@@ -89,7 +89,7 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 
 | Type            | Name                |
 | --------------- | ------------------- |
-| `List<Article>` | `XMLHTTPRequest`    |
+| `List<Article>` | `articles`    |
 | `Set<User>`     | `users`             |
 
 * __In case where entity itself has a plural name, you may use “*List/*Set/*Array” postfix__
@@ -140,7 +140,7 @@ class MyClass {
 1. Constants 
 2. Fields initialized in constructor
 3. Local variables
-4. View fields
+4. android.View fields
 5. getInstance()/newInstance() methods (if singleton)
 6. Constructors
 7. Lifecycle methods (in natural order)
@@ -208,6 +208,7 @@ public class MainActivity extends BaseActivity {
 ```
 
 ### 2.4 Regions
+
 Region marks lets you create a block of code that can be expanded or collapsed. It also makes the separation of one type of code pieces from another more visual. This is the feature of IntelliJ IDEA.
 
 Opening tag  
