@@ -147,7 +147,7 @@ class MyClass {
 8. Callbacks/anonymous classes
 9. Public methods
 10. Internal logic (private/protected methods)
-11. Inner classes/interfaces (try to avoid inner classes if possible)
+11. Inner classes/interfaces (try to avoid inner classes)
 
 Each member groups should have a top indented of **one line** except for indent between fields and methods: it should be **two lines**.
 
