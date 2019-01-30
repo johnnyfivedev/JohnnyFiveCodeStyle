@@ -3,7 +3,7 @@
 
 # 1. Project guidelines
 
-## 1.2 File naming
+## 1.1 File naming
 
 #### Class
 
