@@ -209,7 +209,7 @@ public class MainActivity extends BaseActivity {
 
 ### 2.4 Regions
 
-Region marks lets you create a block of code that can be expanded or collapsed. It also makes the separation of one type of code pieces from another more visual. This is the feature of IntelliJ IDEA.
+Region marks let you create a block of code that can be expanded or collapsed. It also makes the separation of one type of code pieces from another more visual. This is the feature of IntelliJ IDEA.
 
 Opening tag  
 `//region ===================== Title ======================`
