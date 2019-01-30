@@ -281,10 +281,10 @@ int longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne
 
 * __Assignment Operator Exception__
 
-An exception to the `break at operators` rule is the assignment operator `=`, the line breaks __after__ the operator.
+The break comes __after__ the operator.
 
 ```java
-int longName =
+int reallyReallyReallyReallyReallyReallyReallyReallyReallyReallylongName =
         anotherVeryLongVariable + aShortOne - thisRidiculousLongOne + theFinalOne;
 ```
 
