@@ -21,7 +21,7 @@ Naming conventions for drawables:
 | Divider      | `divider_`        | `divider_horizontal.9.png`  |
 | Icon         | `ic_`	           | `ic_star.png`               |
 | Tabs         | `tab_`            | `tab_pressed.9.png`         |
-| Background   | `background_`     | `background_top_banner.xml` |
+| Background   | `bg_`     | `background_top_banner.xml` |
 
 #### Layout
 
