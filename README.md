@@ -1,4 +1,4 @@
-# Andorid-Code-Style
+# JohnnyFiveCodeStyle
 
 
 # 1. Project guidelines
