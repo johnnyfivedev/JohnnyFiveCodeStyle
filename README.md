@@ -1,4 +1,4 @@
-# JohnnyFiveCodeStyleAndroid
+# Andorid-Code-Style
 
 
 # 1. Project guidelines
@@ -21,7 +21,7 @@ Naming conventions for drawables:
 | Divider      | `divider_`        | `divider_horizontal.9.png`  |
 | Icon         | `ic_`	           | `ic_star.png`               |
 | Tabs         | `tab_`            | `tab_pressed.9.png`         |
-| Background   | `bg_`     | `background_top_banner.xml` |
+| Background   | `bg_`     	   | `background_top_banner.xml` |
 
 #### Layout
 
@@ -33,7 +33,9 @@ Layout files should match the name of the Android components that they are inten
 | Fragment         | `SignUpFragment`       | `fragment_sign_up.xml`        |
 | Dialog           | `ChangePasswordDialog` | `dialog_change_password.xml`  |
 | RecyclerView item| ---                    | `list_item_address.xml`       |
-| Partial layout   | ---                    | `partial_sign_in.xml`       |
+| Partial layout   | ---                    | `partial_sign_in.xml`         |
+| Menu item        | ---                    | `menu_sign_in.xml`            |
+
 
 
 #### Values
@@ -62,17 +64,18 @@ Let [this](https://stackoverflow.com/questions/2092098/why-do-most-fields-class-
 * **Do not shorten variables names**  
 Use full and identical to class (or at least meaningful) name sequence. Prefer readability over conciseness.
 
-| Bad                                       | Good            		 		 |
+| Bad                                       | Good            		 	                  	 |
 | ----------------------------------------- | ------------------------------------------ |
-| `SimpleDateFormatter sdf` 		    | `SimpleDateFormatter simpleDateFormatter`  |
-| `SimpleDateFormatter formatter` 	    | `SimpleDateFormatter simpleDateFormatter`  |
-| `Boolean b`	  			    | `Boolean isValid`  		 	 |
+| `SimpleDateFormatter sdf` 		            | `SimpleDateFormatter simpleDateFormatter`  |
+| `SimpleDateFormatter formatter` 	        | `SimpleDateFormatter simpleDateFormatter`  |
+| `Boolean b`	  			                      | `Boolean isValid`  		 	                   |
 		
 * **Name booleans according to rules of english language**
 
 `Boolean shouldShow;`  
 `Boolean hasDate;`  
-`hasDate isValid;`  
+`Boolean isValid;`  
+`Boolean areEnabled;`  
 
 * **Treat acronyms as words**
 
@@ -80,8 +83,8 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | ---------------- | ---------------- |
 | `XMLHTTPRequest` | `XmlHttpRequest` |
 | `getCustomerID`  | `getCustomerId`  |
-| `URL`     	   | `url`     	      |
-| `ID`       	   | `id`             |
+| `URL`     	     | `url`     	      |
+| `ID`       	     | `id`             |
 
 ### Collections
 
@@ -89,7 +92,7 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 
 | Type            | Name                |
 | --------------- | ------------------- |
-| `List<Article>` | `articles`    |
+| `List<Article>` | `articles`          |
 | `Set<User>`     | `users`             |
 
 * __In case where entity itself has a plural name, you may use “*List/*Set/*Array” postfix__
@@ -99,7 +102,7 @@ Use full and identical to class (or at least meaningful) name sequence. Prefer r
 | `List<Goods>`   | `goodsList`         |
 | `Set<Scissors>` | `scissorsSet`       |
 
-Also you may use *Object, *Entiry, or *Model postfix.
+Also you may use *Object, *Entiry, or *Model postfix (But be careful with postfix selection).
 
 | Type                | Name                |
 | ------------------  | ------------------- |
@@ -137,7 +140,8 @@ class MyClass {
 
 ### 2.3 Class member ordering
 
-1. Constants 
+1. Static constants 
+2. Constants
 2. Fields initialized in constructor
 3. Local variables
 4. android.View fields
@@ -172,7 +176,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-	initUi();
+	      initUi();
     }
     
     @Override
@@ -227,7 +231,7 @@ Following type of regions are most common and used to separate members form para
 
 If MVP architectural pattern used:
 * `View` - View methods (goes before `Public`) 
-* `Presenter` - Presenter methods
+* `Presenter` - Presenter methods (goes before `Public`)
 
 ### 2.5 Parameter ordering in methods
 
@@ -343,7 +347,6 @@ public Observable<Location> syncLocations() {
 | `TextView`           | `tv_`               |
 | `ImageView`          | `iv_`               |
 | `Button`             | `btn_`              |
-| `Menu`               | `menu_`             |
 
 #### 2.2.1.2 Strings
 
